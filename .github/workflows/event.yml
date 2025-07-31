@@ -12,7 +12,7 @@ jobs:
         runs-on: windows-latest
         steps:
             - name: "Running on master/test branch when push event is triggered."
-              run: echo "Running on master/test branch when push event is triggered.
+              run: echo "Running on master/test branch when push event is triggered."
     
     on-workflow-dispatch:
         if: ${{ github.event_name == 'workflow_dispatch' }}
