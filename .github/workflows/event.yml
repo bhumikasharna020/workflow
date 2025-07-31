@@ -1,4 +1,4 @@
-name: "Workflow for Push and pull command"
+name: "Workflow for event"
 
 on:
     push:
@@ -9,7 +9,6 @@ on:
 
 jobs:
     on-push:
-        if: ${{ github.event_name == 'push' }}
         runs-on: windows-latest
         steps:
             - name: "Running on master/test branch when push event is triggered."
