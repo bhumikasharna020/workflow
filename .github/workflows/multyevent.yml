@@ -1,4 +1,4 @@
-name: "Workflow for multievent"
+name: "Workflow for multievent "
 
 on:
     push:
