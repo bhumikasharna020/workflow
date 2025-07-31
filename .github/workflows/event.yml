@@ -1,0 +1,23 @@
+name: "Workflow for Push and pull command"
+
+on:
+    push:
+        branches:
+            - master
+            - test
+    workflow_dispatch:
+
+jobs:
+    on-push:
+        if: ${{ github.event_name == 'push' }}
+        runs-on: windows-latest
+        steps:
+            - name: "Running on master/test branch when push event is triggered."
+              run: echo "Running on master/test branch when push event is triggered.
+    
+    on-workflow-dispatch:
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        runs-on: windows-latest
+        steps:
+          - name: "Running on master/test branch when workflow dispatch event is triggered."
+            run: echo "Running on master/test branch when workflow dispatch event is triggered."
