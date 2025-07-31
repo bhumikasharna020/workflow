@@ -1,0 +1,51 @@
+name: "Workflow for Push and pull command"
+
+on:
+    push:
+        branches:
+            - master
+            - test
+    pull_request:
+        branches:
+            - master
+            - test
+        types:
+            - closed
+            - opened
+    workflow_dispatch:
+
+jobs:
+    on-push:
+        if: ${{ github.event_name == 'push' }}
+        runs-on: windows-latest
+        steps:
+            - name: "Running on master/test branch when push event is triggered."
+              run: echo "Running on master/test branch when push event is triggered."
+    
+    on-pull-request:
+        if: ${{ github.event_name == 'pull_request' }}
+        runs-on: windows-latest
+        steps:
+            - name: "Running on master/test branch when pull_request event is triggered."
+              run: echo "Running on master/test branch when pull_request event is triggered."
+   
+    on-pull-request-opened:
+        if: ${{ github.event_name == 'pull_request' && github.event.action == 'opened' }}
+        runs-on: windows-latest
+        steps:
+            - name: "Running on master/test branch when pull_request for opening event is triggered."
+              run: echo "Running on master/test branch when pull_request for opening event is triggered."
+
+    on-pull-request-closed:
+       if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
+       runs-on: windows-latest
+       steps:
+           - name: "Running on master/test branch when pull_request for closing event is triggered."
+             run: echo "Running on master/test branch when pull_request for closing event is triggered."
+    
+    on-workflow-dispatch:
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        runs-on: windows-latest
+        steps:
+          - name: "Running on master/test branch when workflow dispatch event is triggered."
+            run: echo "Running on master/test branch when workflow dispatch event is triggered."
